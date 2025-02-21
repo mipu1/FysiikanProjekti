@@ -113,12 +113,12 @@ map = folium.Map(location = [start_lat,start_long], zoom_start = 14)
 
 
 folium.PolyLine(dfLoc[['Latitude (°)','Longitude (°)']], color = 'blue', weight = 3.5, opacity = 1).add_to(map)
-
+st.subheader("Karttanäkymä")
 st_map = st_folium(map, width=900, height=650, zoom= 15)
 
 
             ## Suodatettu kiihtyvyysdata, jota käytit askelmäärän määrittelemiseen
-st.subheader("Kiihtyvyysdata")                                          #
+st.subheader("Kiihtyvyysdata z-komponentti")                            #
 st.line_chart(f_filter_z)                                               #         
 
             ## Tehospektri
