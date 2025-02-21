@@ -7,8 +7,8 @@ from scipy.signal import butter, filtfilt, find_peaks
 from math import radians, cos, sin, asin, sqrt
 
 
-pathLoc = 'Location.csv'
-pathLin = 'Linear Acceleration.csv'
+pathLoc = 'https://raw.githubusercontent.com/mipu1/FysiikanProjekti/refs/heads/main/Location.csv'
+pathLin = 'https://raw.githubusercontent.com/mipu1/FysiikanProjekti/refs/heads/main/Linear%20Acceleration.csv'
 
 dfLoc = pd.read_csv(pathLoc)
 dfLin = pd.read_csv(pathLin)
