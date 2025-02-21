@@ -96,15 +96,15 @@ dfLoc['cum_dist'] = np.cumsum(dfLoc['dist'])
 nopeuden_ka = dfLoc['velocity'].mean()
 matka = dfLoc['cum_dist'].iloc[-1]
 
-st.write(f"Keskinopeus {round(nopeuden_ka, 2)} m/s")                            #
-st.write(f"Kuljettu matka {round(matka, 3)} kilometriä")                        #
+st.write(f"Keskinopeus: {round(nopeuden_ka, 2)} m/s")                            #
+st.write(f"Kuljettu matka: {round(matka, 3)} kilometriä")                        #
 
 
             ## Askelpituus (askelmäärä ja matkanpituus)
 
 askelpituus = (matka*1000)/askelmäärä_peaks
 
-st.write(f"Askelpituus ~ {round(askelpituus, 2)} cm")    
+st.write(f"Askelpituus ~ {round(askelpituus, 2)} cm")                           #
 
             ## Kartta
 start_lat = dfLoc['Latitude (°)'].mean()
@@ -114,16 +114,15 @@ map = folium.Map(location = [start_lat,start_long], zoom_start = 14)
 
 folium.PolyLine(dfLoc[['Latitude (°)','Longitude (°)']], color = 'blue', weight = 3.5, opacity = 1).add_to(map)
 
-st_map = st_folium(map, width=900, height=650)
+st_map = st_folium(map, width=900, height=650, zoom= 15)
 
-
-                          #
 
             ## Suodatettu kiihtyvyysdata, jota käytit askelmäärän määrittelemiseen
-st.line_chart(f_filter_z, x_label="Kiihtyvyysdata", )
+st.subheader("Kiihtyvyysdata")                                          #
+st.line_chart(f_filter_z)                                               #         
 
             ## Tehospektri
-
+st.subheader("Tehospektri")
 chart_data = pd.DataFrame(np.transpose(np.array([freq[L],psd[L].real])), columns=["freq", "psd"])
 st.line_chart(chart_data, x = 'freq', y = 'psd' , y_label = 'Teho',x_label = 'Taajuus [Hz]')
 
